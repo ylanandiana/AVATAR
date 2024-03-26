@@ -1,0 +1,165 @@
+/* Custom CSS for the navigation bar */
+.navbar {
+    background-color: #333;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  
+  .navbar-inverse .navbar-brand {
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .navbar-inverse .navbar-brand:hover,
+  .navbar-inverse .navbar-brand:focus {
+    color: #fff;
+  }
+  
+  .navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .navbar-inverse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  
+  .navbar-inverse .navbar-nav>.active>a,
+  .navbar-inverse .navbar-nav>.active>a:hover,
+  .navbar-inverse .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  
+  .navbar-inverse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-nav>li>a:focus {
+    background-color: #222;
+  }
+  
+  .navbar-inverse .navbar-toggle {
+    border-color: #222;
+  }
+  
+  .navbar-inverse .navbar-toggle:hover,
+  .navbar-inverse .navbar-toggle:focus {
+    background-color: #222;
+  }
+  
+  .navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  
+  .navbar-inverse .navbar-collapse {
+    border-color: #333;
+  }
+  
+  .navbar-inverse .navbar-collapse .navbar-nav>li>a {
+    color: #fff;
+  }
+  
+  .navbar-inverse .navbar-collapse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-collapse .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  
+  .navbar-inverse .navbar-right>li>a {
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .navbar-inverse .navbar-right>li>a:hover,
+  .navbar-inverse .navbar-right>li>a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  
+  .dropdown-menu {
+    background-color: #333;
+  }
+  
+  .dropdown-menu>li>a {
+    color: #fff;
+  }
+  
+  .dropdown-menu>li>a:hover,
+  .dropdown-menu>li>a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  
+  .dropdown-menu>.active>a,
+  .dropdown-menu>.active>a:hover,
+  .dropdown-menu>.active>a:focus {
+    color: #fff;
+    background-color: #222;
+  }
+  
+  .dropdown-menu>.divider {
+    background-color: #222;
+  }
+  
+  /* Custom CSS for the body */
+  body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+  }
+  
+  .logo img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .tagline {
+    text-align: center;
+  }
+  
+  .wide {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orderblock {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orderblock h2 {
+    color: wheat;
+  }
+  
+  .btn-success {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+  }
+  
+  .btn-success:hover,
+  .btn-success:focus,
+  .btn-success:active {
+    background-color: #449d44;
+    border-color: #449d44;
+  }
+  
+  .btn-success:active:focus {
+    background-color: #398439;
+    border-color: #398439;
+  }
+  
+  .btn-success:disabled,
+  .btn-success.disabled,
+  .btn-success[disabled],
+  fieldset[disabled] .btn-success {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    opacity: 0.65;
+  }
