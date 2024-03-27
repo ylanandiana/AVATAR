@@ -1,165 +1,276 @@
-/* Custom CSS for the navigation bar */
+/* Reset default browser styles */
+
+/*index*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #f1f1f1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* Navbar Styles */
 .navbar {
-    background-color: #333;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 0;
-  }
-  
-  .navbar-inverse .navbar-brand {
-    color: #fff;
-    font-size: 24px;
-  }
-  
-  .navbar-inverse .navbar-brand:hover,
-  .navbar-inverse .navbar-brand:focus {
-    color: #fff;
-  }
-  
-  .navbar-inverse .navbar-nav>li>a {
-    color: #fff;
-    font-size: 16px;
-  }
-  
-  .navbar-inverse .navbar-nav>li>a:hover,
-  .navbar-inverse .navbar-nav>li>a:focus {
-    color: #fff;
-    background-color: transparent;
-  }
-  
-  .navbar-inverse .navbar-nav>.active>a,
-  .navbar-inverse .navbar-nav>.active>a:hover,
-  .navbar-inverse .navbar-nav>.active>a:focus {
-    color: #fff;
-    background-color: transparent;
-  }
-  
-  .navbar-inverse .navbar-nav>li>a:hover,
-  .navbar-inverse .navbar-nav>li>a:focus {
-    background-color: #222;
-  }
-  
-  .navbar-inverse .navbar-toggle {
-    border-color: #222;
-  }
-  
-  .navbar-inverse .navbar-toggle:hover,
-  .navbar-inverse .navbar-toggle:focus {
-    background-color: #222;
-  }
-  
-  .navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #fff;
-  }
-  
-  .navbar-inverse .navbar-collapse {
-    border-color: #333;
-  }
-  
-  .navbar-inverse .navbar-collapse .navbar-nav>li>a {
-    color: #fff;
-  }
-  
-  .navbar-inverse .navbar-collapse .navbar-nav>li>a:hover,
-  .navbar-inverse .navbar-collapse .navbar-nav>li>a:focus {
-    color: #fff;
-    background-color: transparent;
-  }
-  
-  .navbar-inverse .navbar-right>li>a {
-    color: #fff;
-    font-size: 16px;
-  }
-  
-  .navbar-inverse .navbar-right>li>a:hover,
-  .navbar-inverse .navbar-right>li>a:focus {
-    color: #fff;
-    background-color: transparent;
-  }
-  
-  .dropdown-menu {
-    background-color: #333;
-  }
-  
-  .dropdown-menu>li>a {
-    color: #fff;
-  }
-  
-  .dropdown-menu>li>a:hover,
-  .dropdown-menu>li>a:focus {
-    color: #fff;
-    background-color: transparent;
-  }
-  
-  .dropdown-menu>.active>a,
-  .dropdown-menu>.active>a:hover,
-  .dropdown-menu>.active>a:focus {
-    color: #fff;
-    background-color: #222;
-  }
-  
-  .dropdown-menu>.divider {
-    background-color: #222;
-  }
-  
-  /* Custom CSS for the body */
-  body {
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-  }
-  
-  .logo img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .tagline {
-    text-align: center;
-  }
-  
-  .wide {
-    background-color: #fff;
-    padding: 20px;
-    margin-top: 70px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .orderblock {
-    background-color: #f7f7f7;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .orderblock h2 {
-    color: wheat;
-  }
-  
-  .btn-success {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
-  }
-  
-  .btn-success:hover,
-  .btn-success:focus,
-  .btn-success:active {
-    background-color: #449d44;
-    border-color: #449d44;
-  }
-  
-  .btn-success:active:focus {
-    background-color: #398439;
-    border-color: #398439;
-  }
-  
-  .btn-success:disabled,
-  .btn-success.disabled,
-  .btn-success[disabled],
-  fieldset[disabled] .btn-success {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
-    opacity: 0.65;
-  }
+  background-color: #333; /* Set the background color */
+  border: none; /* Remove border */
+}
+
+.navbar-brand {
+  color: #fff; /* Set the text color */
+  font-size: 24px; /* Set the font size */
+}
+
+.navbar-nav > li > a {
+  color: #fff; /* Set the text color */
+  font-size: 16px; /* Set the font size */
+  padding: 15px 20px; /* Add some padding around the links */
+}
+
+.navbar-nav > li.active > a,
+.navbar-nav > li.active > a:hover,
+.navbar-nav > li.active > a:focus {
+  background-color: #555; /* Set the background color for active link */
+}
+
+.navbar-nav.navbar-right > li > a {
+  padding: 15px 20px; /* Add some padding around the links */
+}
+
+/* Hamburger Icon Styles */
+.navbar-toggler {
+  border: none; /* Remove border */
+  background: transparent; /* Set background as transparent */
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* Set the color of hamburger icon */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  background-color: #333; /* Set the background color */
+}
+
+.dropdown-menu > li > a {
+  color: #fff; /* Set the text color */
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #555; /* Set the background color on hover/focus */
+}
+
+.dropdown-menu > li > a > span {
+  margin-right: 5px; /* Add some space between icon and text */
+}
+
+.wide {
+  background-color: #fff;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.wide img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tagline {
+  color: #fff;
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+.orderblock {
+  background-color: #f1f1f1;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.orderblock h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.orderblock a {
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: #5cb85c;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-image: url("bg5.png") ;
+}
+
+.orderblock a:hover {
+  background-color: #449d44;
+}
+.wide {
+  background-color: #222;
+  padding: 50px 0;
+}
+
+.line {
+  border-top: 2px solid #fff;
+}
+
+.logo {
+  text-align: center;
+}
+
+.tagline {
+  text-align: center;
+  font-size: 24px;
+}
+
+.orderblock {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.orderblock h2 {
+  color: wheat;
+}
+.wide {
+  background-color: #f8f8f8;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tagline {
+  font-size: 24px;
+  margin-top: 30px;
+}
+.orderblock {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.orderblock h2 {
+  color: #333;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.orderblock a.btn {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 20px 40px;
+  font-size: 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.orderblock a.btn:hover {
+  background-color: #45a049;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  background-color: #333;
+  border: none;
+}
+
+.dropdown-menu > li > a {
+  color: #e70b0b;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: #ffd700;
+  color: #333;
+}
+
+.dropdown-menu > li > a:focus {
+  background-color: #ffd700;
+  color: #333;
+}
+
+.dropdown-menu > li > a:active {
+  background-color: #ffd700;
+  color: #333;
+}
+
+.scroll-up-btn{
+  position: fixed;
+  height: 45px;
+  width: 42px;
+  background: crimson;
+  right: 30px;
+  bottom: 10px;
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+  z-index: 9999;
+  font-size: 30px;
+  border-radius: 6px;
+  border-bottom-width: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.scroll-up-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 45px;
+  width: 42px;
+  background: crimson;
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+  z-index: 9999;
+  font-size: 30px;
+  border-radius: 6px;
+  border-bottom-width: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-up-btn:hover {
+  filter: brightness(90%);
+}

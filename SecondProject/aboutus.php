@@ -1,28 +1,21 @@
 <?php
 session_start();
-require 'connection.php';
-$conn = Connect();
-if(!isset($_SESSION['login_user2'])){
-header("location: customerlogin.php"); 
-}
-
-unset($_SESSION["cart"]);
 ?>
 
 <html>
 
   <head>
-    <title> Cart | Dream Cafe' </title>
+    <title> About | Dream Cafe' </title>
   </head>
 
-  <link rel="stylesheet" type = "text/css" href ="css/COD.css">
+  <link rel="stylesheet" type = "text/css" href ="css/aboutus.css">
   <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 <body>
 
   
@@ -65,9 +58,8 @@ unset($_SESSION["cart"]);
         <div class="collapse navbar-collapse " id="myNavbar">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Home</a></li>
-            <li><a href="aboutus.php">About</a></li>
+            <li class="active"><a href="aboutus.php">About</a></li>
             <li><a href="contactus.php">Contact Us</a></li>
-
           </ul>
 
 <?php
@@ -88,8 +80,8 @@ else if (isset($_SESSION['login_user2'])) {
            <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_user2']; ?> </a></li>
             <li><a href="foodlist.php"><span class="glyphicon glyphicon-cutlery"></span> Food Zone </a></li>
-            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart
-             (<?php
+            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart 
+            (<?php
               if(isset($_SESSION["cart"])){
               $count = count($_SESSION["cart"]); 
               echo "$count"; 
@@ -97,7 +89,7 @@ else if (isset($_SESSION['login_user2'])) {
               else
                 echo "0";
               ?>)
-              </a></li>
+            </a></li>
             <li><a href="logout_u.php"><span class="glyphicon glyphicon-log-out"></span> Log Out </a></li>
           </ul>
   <?php        
@@ -111,7 +103,7 @@ else {
                 <ul class="dropdown-menu">
               <li> <a href="customersignup.php"> User Sign-up</a></li>
               <li> <a href="managersignup.php"> Manager Sign-up</a></li>
-              <li> <a href="#"> Admin Sign-up</a></li>
+          
             </ul>
             </li>
 
@@ -119,7 +111,7 @@ else {
               <ul class="dropdown-menu">
               <li> <a href="customerlogin.php"> User Login</a></li>
               <li> <a href="managerlogin.php"> Manager Login</a></li>
-              <li> <a href="#"> Admin Login</a></li>
+
             </ul>
             </li>
           </ul>
@@ -127,33 +119,22 @@ else {
 <?php
 }
 ?>
-
-
         </div>
 
       </div>
     </nav>
 
+    <div class="wide">
+        
+        <div class="tagline"><font color="#ff8c1a"><strong> Where Every </font> </strong><strong> <font color="#e6b800">Flavor Tells</strong></font> <font color="#e6e600"><strong>a Story!! </strong></font></div>
+<div class="tagline"><font color="aqua">Dream Cafe' </font> </div>        
 
-
-        <div class="container">
-          <div class="jumbotron">
-            <h1 class="text-center" style="color: green;"><span class="glyphicon glyphicon-ok-circle"></span> Order Placed Successfully.</h1>
-          </div>
-        </div>
         <br>
+        <h2 style="color: white;"><br>Welcome to our online food website....!</h2><br><br>
+<h3 style="color:wheat;">We understand that your time is precious, which is why we have streamlined the ordering process for ultimate convenience. With our user-friendly interface, you can effortlessly navigate through our virtual aisles, customizing your order to perfection. Explore detailed descriptions, tantalizing food visuals, and customer reviews that will guide you towards making the perfect selection.
+      </h3>
+    </div>
 
-<h2 class="text-center"> Thank you for Ordering at Dream Cafe'! The ordering process is now complete.</h2>
-
-<?php 
-  $num1 = rand(100000,999999); 
-  $num2 = rand(100000,999999); 
-  $num3 = rand(100000,999999);
-  $number = $num1.$num2.$num3;
-?>
-
-<h3 class="text-center"> <strong>Your Order Number:</strong> <span style="color: blue;"><?php echo "$number"; ?></span> </h3>
-
-        </body>
-
+      
+         </body>
 </html>
