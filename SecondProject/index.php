@@ -1,128 +1,286 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Dream Cafe'</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <head>
-    <title> Home | CakeBytes Cafe' </title>
-  </head>
+</head>
 
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-REPLACE_WITH_INTEGRITY_ATTRIBUTE" crossorigin="anonymous" />
+<body   > 
 
-<body>
-<div class="scroll-up-btn">
-        <i class="fas fa-angle-up"></i>
+    <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </button>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <!-- Replace 'path_to_your_logo.png' with the actual path to your logo image -->
+        <a class="navbar-brand" href="index.php">
+            <img src="images/logo1.jpg" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
+            aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservation.php">Make a Reservation</a></li>
+                </ul>
+
+                <?php if(isset($_SESSION['login_user1'])) { ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['login_user1']; ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="myrestaurant.php">MANAGER CONTROL PANEL</a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout_m.php">Log Out</a></li>
+                    </ul>
+                <?php } elseif (isset($_SESSION['login_user2'])) { ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['login_user2']; ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="foodlist.php">Food Zone</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.php">Cart (<?php echo isset($_SESSION["cart"]) ? count($_SESSION["cart"]) : '0'; ?>)</a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout_u.php">Log Out</a></li>
+                    </ul>
+                <?php } else { ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="signupDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span> Sign Up
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="signupDropdown">
+                                <a class="dropdown-item" href="customersignup.php">User Sign-up</a>
+                                <a class="dropdown-item" href="managersignup.php">Manager Sign-up</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-log-in"></span> Login
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                                <a class="dropdown-item" href="customerlogin.php">User Login</a>
+                                <a class="dropdown-item" href="managerlogin.php">Manager Login</a>
+                            </div>
+                        </li>
+                    </ul>
+                <?php } ?>
+            </div>
+        </div>
+    </nav>
+
+<!-- Hero Section -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <h1 class="display-4" style="font-family: 'Great Vibes', cursive;">Welcome to CakeBytes Cafe'</h1>
+            <!-- Add your GIF here -->
+            <img src="images/dish.gif" alt="Dishes Highlight" class="img-fluid">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="col-md-12 text-center">
+    <h1 class="display-4">Categories</h1>
+</div>
+<br>
+
+<!-- Carousel Section -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+</ol>
+
+    <!-- Carousel inner content -->
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+        <!-- Croissant -->
+        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Croissant">
+        <div class="carousel-caption text-dark bg-light">
+            <h5>Croissant</h5>
+            <!-- Add description or link if needed -->
+        </div>
+    </div>
+    <div class="carousel-item">
+        <!-- Danish Pastry -->
+        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Danish Pastry">
+        <div class="carousel-caption text-dark bg-light">
+            <h5>Danish Pastry</h5>
+            <!-- Add description or link if needed -->
+        </div>
+    </div>
+    <!-- Add more carousel items for additional pastries -->
+    <div class="carousel-item">
+        <!-- Éclair -->
+        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Éclair">
+        <div class="carousel-caption text-dark bg-light">
+            <h5>Éclair</h5>
+            <!-- Add description or link if needed -->
+        </div>
+    </div>
+    <div class="carousel-item">
+        <!-- Macaron -->
+        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Macaron">
+        <div class="carousel-caption text-dark bg-light">
+            <h5>Macaron</h5>
+            <!-- Add description or link if needed -->
+        </div>
+    </div>
+    <div class="carousel-item">
+        <!-- Muffin -->
+        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Muffin">
+        <div class="carousel-caption text-dark bg-light">
+            <h5>Muffin</h5>
+            <!-- Add description or link if needed -->
+        </div>
+    </div>
+    <div class="carousel-item">
+        <!-- Tart -->
+        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Tart">
+        <div class="carousel-caption text-dark bg-light">
+            <h5>Tart</h5>
+            <!-- Add description or link if needed -->
+        </div>
+    </div>
+</div>
+
+
+    <!-- Carousel controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+    <!-- Reviews Section -->
+   
+
+    <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Customer Reviews</h2>
+            <div class="card-deck">
+                <!-- Review Card 1 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">John Doe</h5>
+                        <p class="card-text">"Great desserts and cozy atmosphere! The staff is friendly and attentive. I highly recommend the Strawberry shakes!"</p>
+                        <div class="rating">
+                            <!-- Add stars here -->
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Jane Smith</h5>
+                        <p class="card-text">"CakeBytes Cafe' never disappoints! Their breakfast menu is fantastic, and the coffee is always brewed to perfection. A must-visit for brunch lovers!"</p>
+                        <div class="rating">
+                            <!-- Add stars here -->
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cliane Barcenas</h5>
+                        <p class="card-text">"Excellent service and delicious food! The cakes are a must-try, especially the red velvet. Can't wait to visit again!"</p>
+                        <div class="rating">
+                            <!-- Add stars here -->
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            <a class="btn btn-lg btn-pastry" href="customerlogin.php" role="button">Order Now</a>
+
+            </div>
+        </div>
     </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+    <!-- Footer -->
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <span class="text-muted">© <?php echo date("Y"); ?> CakeBytes Cafe'</span>
+        </div>
+    </footer>
+
+    <!-- JavaScript code -->
+    <script>
     window.onscroll = function() {
-      scrollFunction()
+        scrollFunction();
     };
 
     function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-      } else {
-        document.getElementById("myBtn").style.display = "none";
-      }
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
     }
 
     function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
-  </script>
+</script>
 
-<nav class="navbar navbar-inverse navbar-fixed-top navigation-clean-search" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.php">CakeBytes Cafe'</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">Home</a></li>
-        <li><a href="aboutus.php">About</a></li>
-        <li><a href="contactus.php">Contact Us</a></li>
-      </ul>
-
-      <?php if (isset($_SESSION['login_user1'])) { ?>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_user1']; ?> </a></li>
-          <li><a href="myrestaurant.php">MANAGER CONTROL PANEL</a></li>
-          <li><a href="logout_m.php"><span class="glyphicon glyphicon-log-out"></span> Log Out </a></li>
-        </ul>
-      <?php } else if (isset($_SESSION['login_user2'])) { ?>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $_SESSION['login_user2']; ?> </a></li>
-          <li><a href="foodlist.php"><span class="glyphicon glyphicon-cutlery"></span> Food Zone </a></li>
-          <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart
-              <?php if (isset($_SESSION["cart"])) {
-                $count = count($_SESSION["cart"]);
-                echo "($count)";
-              } else {
-                echo "(0)";
-              } ?>
-            </a></li>
-          <li><a href="logout_u.php"><span class="glyphicon glyphicon-log-out"></span> Log Out </a></li>
-        </ul>
-      <?php } else { ?>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Sign Up <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="customersignup.php">User Sign-up</a></li>
-              <li><a href="managersignup.php">Manager Sign-up</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-log-in"></span> Login <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="customerlogin.php">User Login</a></li>
-              <li><a href="managerlogin.php">Manager Login</a></li>
-            </ul>
-          </li>
-        </ul>
-      <?php } ?>
-    </div>
-  </div>
-</nav>
-
-  
-<div class="wide">
-  <div class="col-xs-5 line"><hr></div>
-  <div class="col-xs-2 logo"><img src="images/icn.png"/></div>
-  <div class="col-xs-2 line"><hr><br><br></div>
-  <br><br><br><br>
-  <div class="tagline">
-    <font color="wheat"><br><br><br><br><br>
-      <p>
-        <img src="images/bg4.png" height="380" width="800" alt="Image resize">
-      </p>
-    </font>
-  </div>
-</div>
-<br>
-<div class="orderblock" style="background-image: url('images/b5.png');">
-<h2 >Food Can Buy Happiness...! Doubt ...? Click Below...!</h2>
-  <center><a class="btn btn-success btn-lg" href="customerlogin.php" role="button">Order Now</a></center>
-</div>
-  
+<!-- Add Bootstrap JavaScript and jQuery library references -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

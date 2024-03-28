@@ -1,0 +1,55 @@
+/* styles/reservation.css */
+
+/* General styles */
+body {
+    background-image: url('path_to_your_background_image.jpg'); /* Add your background image */
+    background-color: #ffc0cb; /* fallback color if the image doesn't load */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* to keep the background fixed while scrolling */
+    font-family: 'Great Vibes', cursive;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+}
+
+/* Alert styles */
+.alert {
+    margin-top: 20px;
+}

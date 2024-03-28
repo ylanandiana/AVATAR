@@ -1,0 +1,293 @@
+/* Global Styles */
+
+/* Body Style */
+body {
+    background-image: url('path_to_your_background_image.jpg');
+    background-color: #ffc0cb; /* fallback color if the image doesn't load */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* to keep the background fixed while scrolling */
+  
+}
+
+
+/* Navbar Style */
+.navbar {
+    background-color: #343a40; /* Dark background color */
+    padding: 10px 0; /* Add padding to the top and bottom */
+}
+
+/* Navbar Brand Logo */
+.navbar-brand img {
+    max-height: 40px; /* Adjust the maximum height of the logo */
+    margin-right: 10px; /* Add margin to separate the logo from text */
+}
+
+/* Navbar Links */
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff; /* White text color */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ccc; /* Light gray on hover */
+}
+
+/* Dropdown Menu */
+.navbar-dark .navbar-nav .dropdown-menu {
+    background-color: #343a40; /* Dark background color */
+}
+
+.navbar-dark .navbar-nav .dropdown-menu a {
+    color: #fff; /* White text color */
+}
+
+.navbar-dark .navbar-nav .dropdown-menu a:hover {
+    background-color: #555; /* Dark gray on hover */
+}
+
+/* Carousel Caption Style */
+.carousel-caption {
+    background-color: rgba(255, 255, 255, 0.7); /* Background color */
+    color: #000; /* Text color */
+    padding: 10px; /* Padding */
+    border-radius: 10px; /* Border radius */
+}
+#carouselExampleIndicators .carousel-item img,
+.carousel-item img {
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    max-width: 100%; /* Set the maximum width to fill the container */
+    max-height: 600px; /* Set a larger maximum height to make the images bigger */
+    width: auto; /* Allow the width to adjust automatically */
+    height: auto; /* Allow the height to adjust automatically */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+/*hero*/
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Text color */
+    font-size: 4em; /* Font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow */
+}
+
+/* Styling for the categories section */
+.categories-title {
+    color: #fff; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow */
+}
+
+
+
+/* Welcome Heading Style */
+.display-4 {
+    color: #fff; /* White color */
+    margin-top: 100px; /* Adjust top margin */
+}
+
+/* About and Contact Sections Style */
+.container h2 {
+    color: #343a40; /* Dark color */
+    margin-bottom: 30px; /* Adjust bottom margin */
+}
+
+.container p {
+    color: #555; /* Dark gray color */
+}
+
+/* Order Now Button Style */
+/* Button Style for Pastries */
+.btn-pastry {
+    background-color: #ffcc80; /* Background color */
+    color: #333; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    font-size: 18px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect */
+.btn-pastry:hover {
+    background-color: #ffa726; /* Darker background color on hover */
+    color: #fff; /* Text color on hover */
+}
+
+
+/* Order Now Button Style */
+#myBtn {
+    display: none; /* Hide by default */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Place the button 20px from the bottom */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Add a higher z-index to keep it above other elements */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    background-color: #663300; /* Dark brown background color */
+    color: #ffcc66; /* Light yellow text color */
+    cursor: pointer; /* Add cursor pointer */
+    padding: 15px; /* Add padding */
+    border-radius: 50%; /* Rounded shape */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#myBtn:hover {
+    background-color: #ff9900; /* Orange color on hover */
+}
+
+/* Ice cream cone icon */
+#myBtn::before {
+    content: ''; /* Empty content */
+    position: absolute; /* Absolute position */
+    top: 30%; /* Position at the top */
+    left: 50%; /* Position at the left */
+    transform: translate(-50%, -50%) rotate(45deg); /* Center horizontally and vertically, rotate 45 degrees */
+    width: 20px; /* Width of the ice cream cone */
+    height: 20px; /* Height of the ice cream cone */
+    border-top: 2px solid #ffcc66; /* Light yellow color for the cone */
+    border-left: 2px solid #ffcc66; /* Light yellow color for the cone */
+    transform-origin: center; /* Set the transform origin to the center */
+}
+
+#myBtn::after {
+    content: ''; /* Empty content */
+    position: absolute; /* Absolute position */
+    top: 50%; /* Position at the top */
+    left: 50%; /* Position at the left */
+    transform: translate(-50%, -50%) rotate(-45deg); /* Center horizontally and vertically, rotate -45 degrees */
+    width: 20px; /* Width of the ice cream cone */
+    height: 20px; /* Height of the ice cream cone */
+    border-top: 2px solid #ffcc66; /* Light yellow color for the cone */
+    border-right: 2px solid #ffcc66; /* Light yellow color for the cone */
+    transform-origin: center; /* Set the transform origin to the center */
+}
+
+#myBtn span {
+    position: absolute; /* Absolute position */
+    top: 50%; /* Position at the top */
+    left: 50%; /* Position at the left */
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    font-size: 20px; /* Font size */
+}
+
+
+/* Footer Style */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+}
+
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+}
+
+.rating span {
+    font-size: 30px; /* Adjust size as needed */
+    padding: 0 2px;
+    color: #ffc107; /* Yellow color for filled stars */
+}
+
+.checked {
+    color: #ff9800; /* Orange color for filled stars */
+}
+.card {
+    border-radius: 15px; /* Add border radius to make the corners appear rounded */
+}
+.review-card {
+    background-color: rgba(255, 255, 255, 0.7); /* Background color */
+    color: #000; /* Text color */
+    padding: 20px; /* Padding */
+    border-radius: 10px; /* Border radius */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+/* Example of using a decorative font for headings */
+.display-4 {
+    font-family: 'Great Vibes', cursive; /* Apply decorative font */
+    /* Add additional styling properties as needed */
+}
+
+
+
+/* Signup Form Styling */
+.panel-primary {
+    border-color: #663300; /* Dark brown border color */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    border-radius: 15px; /* Add border radius to make the corners appear rounded */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.panel-primary > .panel-heading {
+    background-color: #ffcc66; /* Light yellow background color for panel heading */
+    color: #663300; /* Dark brown text color for panel heading */
+    font-size: 24px; /* Font size for panel heading */
+    padding: 15px 20px; /* Padding for panel heading */
+    border-top-left-radius: 15px; /* Rounded corners for top left */
+    border-top-right-radius: 15px; /* Rounded corners for top right */
+}
+
+.panel-primary > .panel-body {
+    padding: 30px; /* Padding for panel body */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Bottom margin for form groups */
+}
+
+.form-control {
+    border-radius: 5px; /* Add border radius to form controls */
+}
+
+.input-group-addon {
+    background-color: #ffcc66; /* Light yellow background color for addon */
+    border: none; /* No border */
+    color: #663300; /* Dark brown text color for addon */
+}
+
+/* Button Style */
+.btn-primary {
+    background-color: #663300; /* Dark brown background color */
+    border: none; /* No border */
+    color: #ffcc66; /* Light yellow text color */
+    padding: 10px 20px; /* Padding for button */
+    font-size: 18px; /* Font size for button */
+    border-radius: 5px; /* Add border radius to button */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.btn-primary:hover {
+    background-color: #ff9900; /* Orange background color on hover */
+    color: #663300; /* Dark brown text color on hover */
+}
+
+/* Heading Style */
+.panel-heading h2 {
+    margin: 0; /* Remove margin */
+    font-family: 'Great Vibes', cursive; /* Apply decorative font */
+    font-size: 32px; /* Font size for heading */
+}
+
+/* Label Style */
+label {
+    font-weight: bold; /* Bold font weight for labels */
+    color: #663300; /* Dark brown text color for labels */
+}
+
+/* Link Style */
+a {
+    color: #663300; /* Dark brown color for links */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+a:hover {
+    color: #ffcc66; /* Light yellow color on hover */
+}
