@@ -17,7 +17,21 @@ body {
     padding: 10px 0; /* Add padding to the top and bottom */
 }
 
+.navbar-header {
+    flex: 1; /* Flex grow property */
+}
+.navbar-collapse {
+    flex: 0; /* Disable flex grow for navbar content */
+}
+
 /* Navbar Brand Logo */
+.navbar-brand {
+    margin-right: 0 !important; /* Remove any right margin */
+    margin-left: 0; /* Reset left margin */
+    padding-left: 15px; /* Add padding to the left to create space */
+}
+
+
 .navbar-brand img {
     max-height: 40px; /* Adjust the maximum height of the logo */
     margin-right: 10px; /* Add margin to separate the logo from text */
@@ -180,8 +194,10 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #343a40; /* Dark background color */
-    color: #fff; /* White text color */
+    background-color: #663300; /* Dark brown background color */
+    color: #ffcc66; /* Light yellow text color */
+    padding: 20px 0; /* Padding for footer content */
+    text-align: center; /* Center-align footer content */
 }
 
 .rating {
@@ -263,6 +279,18 @@ body {
     transition: background-color 0.3s ease; /* Smooth transition */
 }
 
+
+.btn-pastry {
+    background-color: #ff9900;
+    color: #663300;
+  }
+  
+  .btn-pastry:hover {
+    background-color: #ff9900;
+    color: #663300;
+  }
+
+  
 .btn-primary:hover {
     background-color: #ff9900; /* Orange background color on hover */
     color: #663300; /* Dark brown text color on hover */
@@ -290,4 +318,16 @@ a {
 
 a:hover {
     color: #ffcc66; /* Light yellow color on hover */
+}
+
+
+/*alert*/
+
+.alert {
+    border-radius: 20px; /* Rounded corners for alert */
+}
+
+.alert-danger {
+    background-color: #ffcccb; /* Light red background color for danger alert */
+    color: #990000; /* Dark red text color for danger alert */
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2024 at 10:26 AM
+-- Generation Time: Mar 30, 2024 at 10:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,8 @@ INSERT INTO `contact` (`Name`, `Email`, `Mobile`, `Subject`, `Message`) VALUES
 ('CHANDAN KUMAR', 'ckj40856@gmail.com', '9487810674', 'sa', ''),
 ('CHANDAN KUMAR', 'ckj40856@gmail.com', '9487810674', 'sa', ''),
 ('BIRJU KUMAR', 'ckj40856@gmail.com', '8903079750', 'asd', 'asdasdasd'),
-('CHANDAN KUMAR', 'ckj40856@gmail.com', '9487810674', 'asd', 'hfgdsfsx');
+('CHANDAN KUMAR', 'ckj40856@gmail.com', '9487810674', 'asd', 'hfgdsfsx'),
+('Cliane Barcenas', 'clianecantuja@gmail.com', '09351878589', 'asdasd', 'fdsaddsad');
 
 -- --------------------------------------------------------
 
@@ -57,8 +58,18 @@ CREATE TABLE `customer` (
   `email` varchar(30) NOT NULL,
   `contact` varchar(30) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`username`, `fullname`, `email`, `contact`, `address`, `password`) VALUES
+('asd', 'ASD FGH', 'fgh@gmail.com', '09351878589', 'Rotunda', '$2y$10$C5YB6QjTLVTCGIK2e1kqz.VwWQ.MjgaOlFZnEajIesCaOszUey2we'),
+('cly', 'Cliane Barcenas', 'clianecantuja@gmail.com', '09351878589', 'Rotunda', '$2y$10$rEISG5KmXKDkuuh7cWHrYuV3TncILk6adBK.JamibgQotc1vX/gPi'),
+('hoy', 'hoy gwapa', 'hoy@gmail.com', '09351878589', 'Rotunda', '$2y$10$D1dEBCTsOBtXpcy7xbC7e.OVS96y9qXWQMuUqRknyzkOFx39hTxm6'),
+('qwerty', 'qwert asdfg', 'qwerty@gmail.com', '09351878589', 'Rotunda', '$2y$10$uTn/7hqrzLS3nGLkGTeOE.bqPumUfRYshQaBnWDBdfM0fXLiTyQIO');
 
 -- --------------------------------------------------------
 
@@ -91,6 +102,13 @@ CREATE TABLE `manager` (
   `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`username`, `fullname`, `email`, `contact`, `address`, `password`) VALUES
+('cly', 'Cliane Barcenas', 'clianecantuja@gmail.com', '09351878589', 'Rotunda', '$2y$10$XBLGDsttjzHsrWaQ1iUuo.h');
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +124,21 @@ CREATE TABLE `orders` (
   `order_date` date NOT NULL,
   `username` varchar(30) NOT NULL,
   `R_ID` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservations`
+--
+
+CREATE TABLE `reservations` (
+  `reservation_ID` int(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `reservation_date` date NOT NULL,
+  `reservation_time` time NOT NULL,
+  `number_of_guests` int(30) NOT NULL,
+  `guest_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -156,6 +189,13 @@ ALTER TABLE `orders`
   ADD KEY `R_ID` (`R_ID`);
 
 --
+-- Indexes for table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`reservation_ID`),
+  ADD KEY `username` (`username`);
+
+--
 -- Indexes for table `restaurants`
 --
 ALTER TABLE `restaurants`
@@ -180,6 +220,12 @@ ALTER TABLE `orders`
   MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `reservation_ID` int(30) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
@@ -202,6 +248,12 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`F_ID`) REFERENCES `food` (`F_ID`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`username`) REFERENCES `customer` (`username`),
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`R_ID`) REFERENCES `restaurants` (`R_ID`);
+
+--
+-- Constraints for table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`username`) REFERENCES `customer` (`username`);
 
 --
 -- Constraints for table `restaurants`

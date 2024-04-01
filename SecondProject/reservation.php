@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reservation.css">
+    <link rel="icon" type="image/x-icon" href="images/logo1.png">
 </head>
 
 <body>
@@ -95,6 +96,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
+
+      <!-- Footer -->
+
+      <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <span class="text-muted">© <?php echo date("Y"); ?> CakeBytes Cafe'</span>
+        </div>
+    </footer>
 </body>
 
 </html>

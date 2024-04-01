@@ -10,18 +10,20 @@ header('Location: managerlogin.php'); // Redirecting To Home Page
 <html>
 
   <head>
-    <title> Manager Login | Dream Cafe' </title>
+   
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Manager Login | CakeBytes Cafe' </title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/managersignup.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/logo1.png">
+
   </head>
 
-  <link rel="stylesheet" type = "text/css" href ="css/myrestaurant.css">
-  <link rel="stylesheet" type = "text/css" href ="css/bootstrap.min.css">
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
- <body>
+<body>
 
 
     <button onclick="topFunction()" id="myBtn" title="Go to top">
@@ -98,7 +100,7 @@ header('Location: managerlogin.php'); // Redirecting To Home Page
     	<div class="col-xs-3" style="text-align: center;">
 
     	<div class="list-group">
-    		<a href="myrestaurant.php" class="list-group-item active">My Restaurant</a>
+    		
     		<a href="view_food_items.php" class="list-group-item ">View Food Items</a>
     		<a href="add_food_items.php" class="list-group-item ">Add Food Items</a>
     		<a href="edit_food_items.php" class="list-group-item ">Edit Food Items</a>
@@ -107,40 +109,26 @@ header('Location: managerlogin.php'); // Redirecting To Home Page
     </div>
     
 
+  <!-- Footer -->
 
-    
-    <div class="col-xs-9">
-      <div class="form-area" style="padding: 0px 100px 100px 100px;">
-        <form action="myrestaurant1.php" method="POST">
-        <br style="clear: both">
-          <h3 style="margin-bottom: 25px; text-align: center; font-size: 30px;"> MY RESTAURANT</h3>
-
-          <div class="form-group">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Your Restaurant's Name" required="">
-          </div>
-
-          <div class="form-group">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your Restaurant's Email" required="">
-          </div>     
-
-          <div class="form-group">
-            <input type="text" class="form-control" id="contact" name="contact" placeholder="Your Restaurant's Contact Number" required="">
-          </div>
-
-          <div class="form-group">
-            <input type="text" class="form-control" id="address" name="address" placeholder="Your Restaurant's Address" required="">
-          </div>
-
-          <div class="form-group">
-          <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right"> ADD RESTAURANT </button>    
-      </div>
-        </form>
-
-        
+  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <span class="text-muted">© <?php echo date("Y"); ?> CakeBytes Cafe'</span>
         </div>
-      
-    </div>
-</div>
+    </footer>
+
+ <!-- Add Bootstrap JavaScript and jQuery library references -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
   </body>
 </html>

@@ -1,176 +1,211 @@
+<?php
+session_start(); // Start the session
+$errors = array();
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
+    $fullname = $_POST['fullname'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $password = $_POST['password'];
+    $passwordRepeat = $_POST['password_repeat'];
+
+    // Validation checks
+    if (empty($fullname) || empty($email) || empty($password) || empty($passwordRepeat)) {
+        $errors[] = "All fields are required";
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Email is not valid";
+    }
+    if (strlen($password) < 8) {
+        $errors[] = "Password must be at least 8 characters long";
+    }
+    if (!preg_match('/[a-z]/', $password) || !preg_match('/[A-Z]/', $password) || !preg_match('/\d/', $password) || !preg_match('/[^a-zA-Z0-9]/', $password)) {
+        $errors[] = "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character";
+    }
+    if ($password !== $passwordRepeat) {
+        $errors[] = "Passwords do not match";
+    }
+
+    // If no errors, proceed with insertion
+    if (empty($errors)) {
+        // Hash the password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        
+        // Insert data into the database
+        require_once "connection.php";
+        $conn = Connect();
+        
+        // Check if email already exists
+        $checkQuery = "SELECT * FROM CUSTOMER WHERE email = ?";
+        $checkStmt = $conn->prepare($checkQuery);
+        $checkStmt->bind_param("s", $email);
+        $checkStmt->execute();
+        $checkResult = $checkStmt->get_result();
+        
+        // Check if email already exists
+        if ($checkResult->num_rows > 0) {
+            $errors[] = "Email already exists";
+        } else {
+            // Check if username already exists
+            $checkUsernameQuery = "SELECT * FROM CUSTOMER WHERE username = ?";
+            $checkUsernameStmt = $conn->prepare($checkUsernameQuery);
+            $checkUsernameStmt->bind_param("s", $username);
+            $checkUsernameStmt->execute();
+            $checkUsernameResult = $checkUsernameStmt->get_result();
+
+            if ($checkUsernameResult->num_rows > 0) {
+                $errors[] = "Username already exists";
+            } else {
+                // Proceed with insertion
+                // Insert user data into the database
+                $insertQuery = "INSERT INTO CUSTOMER (fullname, username, email, contact, address, password) VALUES (?, ?, ?, ?, ?, ?)";
+                $insertStmt = $conn->prepare($insertQuery);
+                $insertStmt->bind_param("ssssss", $fullname, $username, $email, $contact, $address, $hashedPassword);
+                $insertStmt->execute();
+                $insertStmt->close();
+                
+                // Close database connection
+                $conn->close();
+                
+                // Redirect to login page
+                header("Location: customer_registered_success.php");
+                exit();
+            }
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guest Signup | Dream Cafe'</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title> Guest Sign Up | CakeBytes Cafe'</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/x-icon" href="images/logo1.png">
 
 </head>
 <body>
+
 <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <!-- Replace 'path_to_your_logo.png' with the actual path to your logo image -->
-        <a class="navbar-brand" href="index.php">
-            <img src="images/logo1.jpg" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
-            aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="aboutus.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reservation.php">Make a Reservation</a></li>
-                </ul>
-
-                <?php if(isset($_SESSION['login_user1'])) { ?>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['login_user1']; ?></a></li>
-                        <li class="nav-item"><a class="nav-link" href="myrestaurant.php">MANAGER CONTROL PANEL</a></li>
-                        <li class="nav-item"><a class="nav-link" href="logout_m.php">Log Out</a></li>
-                    </ul>
-                <?php } elseif (isset($_SESSION['login_user2'])) { ?>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['login_user2']; ?></a></li>
-                        <li class="nav-item"><a class="nav-link" href="foodlist.php">Food Zone</a></li>
-                        <li class="nav-item"><a class="nav-link" href="cart.php">Cart (<?php echo isset($_SESSION["cart"]) ? count($_SESSION["cart"]) : '0'; ?>)</a></li>
-                        <li class="nav-item"><a class="nav-link" href="logout_u.php">Log Out</a></li>
-                    </ul>
-                <?php } else { ?>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="signupDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user"></span> Sign Up
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="signupDropdown">
-                                <a class="dropdown-item" href="customersignup.php">User Sign-up</a>
-                                <a class="dropdown-item" href="managersignup.php">Manager Sign-up</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-log-in"></span> Login
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="loginDropdown">
-                                <a class="dropdown-item" href="customerlogin.php">User Login</a>
-                                <a class="dropdown-item" href="managerlogin.php">Manager Login</a>
-                            </div>
-                        </li>
-                    </ul>
-                <?php } ?>
-            </div>
-        </div>
-    </nav>
-<!-- Jumbotron -->
-<div class="container">
     <div class="jumbotron">
-        <h1 class="display-4" style="font-family: 'Great Vibes', cursive;">Hi Guest, <br> Welcome to <span class="edit"> CakeBytes Cafe' </span></h1>
+        <h1>Hi Guest, <br> Welcome to <span class="edit"> Dream Cafe' </span></h1>
         <br>
         <p>Get started by creating your account</p>
     </div>
 </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+                <a class="navbar-brand" href="index.php">
+                    <img src="images/logo1.png" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
+                aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
 
-<!-- Signup Form -->
-<div class="container" style="margin-top: 4%; margin-bottom: 2%;">
-    <div class="col-md-5 col-md-offset-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Create Account</div>
-            <div class="panel-body">
-                <form role="form" action="customer_registered_success.php" method="POST">
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="fullname"><span class="text-danger" style="margin-right: 5px;">*</span> Full Name: </label>
-                            <div class="input-group">
-                                <input class="form-control" id="fullname" type="text" name="fullname" placeholder="Your Full Name" required autofocus>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-                            </div>
-                        </div>
+                    <li class="nav-item"><a class="nav-link" href="reservation.php">Make a Reservation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="customerlogin.php">Guest Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="container" style="margin-top:150px">
+    <div class="jumbotron">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-center">Sign Up</h2>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group">
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" class="form-control" id="fullname" name="fullname" value="<?php if(isset($fullname)) echo htmlspecialchars($fullname); ?>">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="username"><span class="text-danger" style="margin-right: 5px;">*</span> Username: </label>
-                            <div class="input-group">
-                                <input class="form-control" id="username" type="text" name="username" placeholder="Your Username" required="">
-                                <span class="input-group-btn">
-                                    <label class="btn btn-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
-                                </span>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<?php if(isset($username)) echo htmlspecialchars($username); ?>">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="email"><span class="text-danger" style="margin-right: 5px;">*</span> Email: </label>
-                            <div class="input-group">
-                                <input class="form-control" id="email" type="email" name="email" placeholder="Email" required="">
-                                <span class="input-group-btn">
-                                    <label class="btn btn-primary"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
-                                </span>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($email)) echo htmlspecialchars($email); ?>">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="contact"><span class="text-danger" style="margin-right: 5px;">*</span> Contact: </label>
-                            <div class="input-group">
-                                <input class="form-control" id="contact" type="text" name="contact" placeholder="Contact" required="">
-                                <span class="input-group-btn">
-                                    <label class="btn btn-primary"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></label>
-                                </span>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number:</label>
+                        <input type="text" class="form-control" id="contact" name="contact" value="<?php if(isset($contact)) echo htmlspecialchars($contact); ?>">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="address"><span class="text-danger" style="margin-right: 5px;">*</span> Address: </label>
-                            <div class="input-group">
-                                <input class="form-control" id="address" type="text" name="address" placeholder="Address" required="">
-                                <span class="input-group-btn">
-                                    <label class="btn btn-primary"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></label>
-                                </span>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" class="form-control" id="address" name="address" value="<?php if(isset($address)) echo htmlspecialchars($address); ?>">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            <label for="password"><span class="text-danger" style="margin-right: 5px;">*</span> Password: </label>
-                            <div class="input-group">
-                                <input class="form-control" id="password" type="password" name="password" placeholder="Password" required="">
-                                <span class="input-group-btn">
-                                    <label class="btn btn-primary"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
-                                </span>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                        <li>It must be a minimum of 8 characters long.</li>
+                        <li>It should include at least one uppercase letter.</li>
+                        <li>It should include at least one lowercase letter.</li>
+                        <li>It should include at least one number.</li>
+                        <li>It should include at least one special character.</li>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-xs-4">
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                        </div>
+                    <div class="form-group">
+                        <label for="password_repeat">Repeat Password:</label>
+                        <input type="password" class="form-control" id="password_repeat" name="password_repeat">
                     </div>
-                    <label style="margin-left: 5px;">or</label> <br>
-                    <label style="margin-left: 5px;"><a href="customerlogin.php">Have an account? Login.</a></label>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <?php
+                    if (!empty($errors)) {
+                        echo '<div class="alert alert-danger" role="alert">';
+                        foreach ($errors as $error) {
+                            echo '<p>' . $error . '</p>';
+                        }
+                        echo '</div>';
+                    }
+                    ?>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+  <!-- Footer -->
+
+  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <span class="text-muted">© <?php echo date("Y"); ?> CakeBytes Cafe'</span>
+        </div>
+    </footer>
+
+<!-- Scroll to Top Button -->
+  <!-- JavaScript code -->
+  <script>
     window.onscroll = function() {
-        scrollFunction()
+        scrollFunction();
     };
 
     function scrollFunction() {
@@ -187,6 +222,8 @@
     }
 </script>
 
+
+<!-- Add Bootstrap JavaScript and jQuery library references -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

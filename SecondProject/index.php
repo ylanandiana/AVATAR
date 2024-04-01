@@ -5,39 +5,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Dream Cafe'</title>
+    <title>Home | CakeBytes Cafe'</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/x-icon" href="images/logo1.png">
 </head>
 
 <body   > 
 
-    <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
+<button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <!-- Replace 'path_to_your_logo.png' with the actual path to your logo image -->
-        <a class="navbar-brand" href="index.php">
-            <img src="images/logo1.jpg" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
-        </a>
+    <div class="navbar-header">
+                <a class="navbar-brand" href="index.php">
+                    <img src="images/logo1.png" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
+                </a>
+            </div>
+            
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
-            aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="aboutus.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reservation.php">Make a Reservation</a></li>
-                </ul>
-
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="aboutus.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="reservation.php">Make a Reservation</a></li>
+            </ul>
+                <!-- User Session Links -->
                 <?php if(isset($_SESSION['login_user1'])) { ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['login_user1']; ?></a></li>
@@ -78,7 +79,6 @@
             </div>
         </div>
     </nav>
-
 <!-- Hero Section -->
 <div class="container-fluid">
     <div class="row">
@@ -185,7 +185,7 @@
                 <!-- Review Card 1 -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">John Doe</h5>
+                        <h5 class="card-title">Ashly Batulan</h5>
                         <p class="card-text">"Great desserts and cozy atmosphere! The staff is friendly and attentive. I highly recommend the Strawberry shakes!"</p>
                         <div class="rating">
                             <!-- Add stars here -->
@@ -201,7 +201,7 @@
                 <!-- Review Card 2 -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Jane Smith</h5>
+                        <h5 class="card-title">John Paul</h5>
                         <p class="card-text">"CakeBytes Cafe' never disappoints! Their breakfast menu is fantastic, and the coffee is always brewed to perfection. A must-visit for brunch lovers!"</p>
                         <div class="rating">
                             <!-- Add stars here -->
@@ -217,7 +217,7 @@
                 <!-- Review Card 3 -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Cliane Barcenas</h5>
+                        <h5 class="card-title">Val Lery</h5>
                         <p class="card-text">"Excellent service and delicious food! The cakes are a must-try, especially the red velvet. Can't wait to visit again!"</p>
                         <div class="rating">
                             <!-- Add stars here -->
