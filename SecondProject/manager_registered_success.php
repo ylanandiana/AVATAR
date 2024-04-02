@@ -23,44 +23,43 @@ if(isset($_POST['fullname'], $_POST['username'], $_POST['email'], $_POST['contac
     exit();
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Manager Registered | CakeBytes Cafe'</title>
+    <title> Registered | CakeBytes Cafe'</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo1.png">
 </head>
-
 <body>
-
-<button onclick="topFunction()" id="myBtn" title="Go to top" style="display: none;">
+    <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <!-- Replace 'path_to_your_logo.png' with the actual path to your logo image -->
-        <a class="navbar-brand" href="index.php">
-            <img src="images/logo1.png" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
-            aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.php">
+                    <img src="images/logo1.png" alt="CakeBytes Logo" class="mr-2"> CakeBytes Cafe'
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
+                    aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="aboutus.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="reservation.php">Make a Reservation</a></li>
                 </ul>
-
+                <!-- User Session Links -->
                 <?php if(isset($_SESSION['login_user1'])) { ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['login_user1']; ?></a></li>
@@ -78,7 +77,7 @@ if(isset($_POST['fullname'], $_POST['username'], $_POST['email'], $_POST['contac
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="signupDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-user"></span> Sign Up
                             </a>
                             <div class="dropdown-menu" aria-labelledby="signupDropdown">
@@ -88,7 +87,7 @@ if(isset($_POST['fullname'], $_POST['username'], $_POST['email'], $_POST['contac
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-log-in"></span> Login
                             </a>
                             <div class="dropdown-menu" aria-labelledby="loginDropdown">
@@ -101,6 +100,7 @@ if(isset($_POST['fullname'], $_POST['username'], $_POST['email'], $_POST['contac
             </div>
         </div>
     </nav>
+
 
 <div class="container" style="margin-top:150px">
     <div class="jumbotron">
