@@ -216,7 +216,7 @@ body {
     color: #ff9800; /* Orange color for filled stars */
 }
 .card {
-    border-radius: 15px; /* Add border radius to make the corners appear rounded */
+    border-radius: 20px; /* Add border radius to make the corners appear rounded */
 }
 .review-card {
     background-color: rgba(255, 255, 255, 0.7); /* Background color */

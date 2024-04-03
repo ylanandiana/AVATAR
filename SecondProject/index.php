@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo1.png">
 </head>
-<body>
+<body   style="background-color: #ffc0cb;">
     <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>
@@ -82,7 +82,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 text-center">
-        <h1 class="display-4" style="font-family: 'Great Vibes', cursive;">Welcome to CakeBytes Cafe'</h1>
+        <h1 class="display-4" style="font-family:solid">Welcome to CakeBytes Cafe'</h1>
             <!-- Add your GIF here -->
             <img src="images/dish.gif" alt="Dishes Highlight" class="img-fluid">
         </div>
@@ -104,57 +104,50 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+   
 </ol>
 
     <!-- Carousel inner content -->
     <div class="carousel-inner">
     <div class="carousel-item active">
         <!-- Croissant -->
-        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Croissant">
+        <img class="d-block w-100" src="categories/shakes.jpg" alt="Shakes">
         <div class="carousel-caption text-dark bg-light">
-            <h5>Croissant</h5>
+            <h5>Shakes</h5>
             <!-- Add description or link if needed -->
         </div>
     </div>
     <div class="carousel-item">
         <!-- Danish Pastry -->
-        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Danish Pastry">
-        <div class="carousel-caption text-dark bg-light">
-            <h5>Danish Pastry</h5>
+        <img class="d-block w-100" src="categories/icecreams.jpg" alt="IceCreams" style="background:transparent">
+        <div class="carousel-caption text-dark bg-light" >
+            <h5>Ice Cream</h5>
+            
             <!-- Add description or link if needed -->
         </div>
     </div>
     <!-- Add more carousel items for additional pastries -->
     <div class="carousel-item">
-        <!-- Éclair -->
-        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Éclair">
-        <div class="carousel-caption text-dark bg-light">
-            <h5>Éclair</h5>
-            <!-- Add description or link if needed -->
-        </div>
-    </div>
-    <div class="carousel-item">
         <!-- Macaron -->
-        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Macaron">
+        <img class="d-block w-100" src="categories/fresh-croissants.jpg" alt="Fresh Croissants">
         <div class="carousel-caption text-dark bg-light">
-            <h5>Macaron</h5>
+            <h5>Fresh Croissants</h5>
             <!-- Add description or link if needed -->
         </div>
     </div>
     <div class="carousel-item">
         <!-- Muffin -->
-        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Muffin">
+        <img class="d-block w-100" src="categories/cupcakes.jpg" alt="Cupcakes">
         <div class="carousel-caption text-dark bg-light">
-            <h5>Muffin</h5>
+            <h5>Cupcakes</h5>
             <!-- Add description or link if needed -->
         </div>
     </div>
     <div class="carousel-item">
         <!-- Tart -->
-        <img class="d-block w-100" src="CakesBytes/pictures/blueberry_croissant.jpg" alt="Tart">
+        <img class="d-block w-100" src="categories/generated-cake-picture.jpg" alt="Cakes">
         <div class="carousel-caption text-dark bg-light">
-            <h5>Tart</h5>
+            <h5>Cakes</h5>
             <!-- Add description or link if needed -->
         </div>
     </div>

@@ -34,15 +34,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn = Connect();
         
         // Check if email already exists
-        $checkQuery = "SELECT * FROM MANAGER WHERE email = ?";
+        $checkQuery = "SELECT * FROM MANAGER WHERE username = ?";
         $checkStmt = $conn->prepare($checkQuery);
-        $checkStmt->bind_param("s", $email);
+        $checkStmt->bind_param("s", $username);
         $checkStmt->execute();
         $checkResult = $checkStmt->get_result();
         
-        // Check if email already exists
+        // Check if username already exists
         if ($checkResult->num_rows > 0) {
-            $errors[] = "Email already exists";
+            $errors[] = "Username already exists";
         } else {
             // Proceed with insertion
             // Insert user data into the database
@@ -65,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 
 
 <!DOCTYPE html>

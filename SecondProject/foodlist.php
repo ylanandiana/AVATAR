@@ -13,14 +13,14 @@ header("location: customerlogin.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Food Lists | CakeBytes Cafe'</title>
+    <title> Home | CakeBytes Cafe'</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo1.png">
 </head>
-<body>
+<body   style="background-color: #ffc0cb;">
     <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>
@@ -228,26 +228,6 @@ else
         </div>
     </footer>
     
-     <!-- JavaScript code -->
-     <script>
-        window.onscroll = function() {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-
-        </script>
 
 <!-- Add Bootstrap JavaScript and jQuery library references -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,4 +1,4 @@
-    <?php
+<?php
 include('login_u.php'); 
 
 if(isset($_SESSION['login_user2'])){
@@ -17,8 +17,14 @@ header("location: foodlist.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo1.png">
+    <style>
+        body {
+            background-image: url(images/CustomerLogin8.jpg);
+            /* background-color: red; */
+        }
+    </style>
 </head>
-<body>
+<body> 
     <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>

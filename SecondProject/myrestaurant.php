@@ -4,21 +4,22 @@ include('session_m.php');
 if(!isset($login_session)){
     header('Location: managerlogin.php'); // Redirecting To Home Page
 }
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dashboard | CakeBytes Cafe'</title>
+    <title> Home | CakeBytes Cafe'</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="css/managersignup.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo1.png">
 </head>
-<body>
+<body   style="background-color: #ffc0cb;">
     <button onclick="topFunction()" id="myBtn" name="Go to top" style="display: none;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </button>
@@ -84,62 +85,71 @@ if(!isset($login_session)){
     </nav>
 
     <div class="container">
-        <div class="jumbotron">
-            <h1>Hello Manager!</h1>
-            <p>Manage all your restaurant from here</p>
-        </div>
-    </div>
-    <div class="container">
-        <div class="container">
-            <div class="col">
+        <h1 class="text-center">Restaurant Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Inventory</h5>
+                        <p class="card-text">Manage your restaurant's inventory.</p>
+                        <a href="view_food_items.php" class="btn btn-primary">View Inventory</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Item</h5>
+                        <p class="card-text">Add a new item to your inventory.</p>
+                        <a href="add_food_items.php" class="btn btn-primary">Add Item</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Edit Item</h5>
+                        <p class="card-text">Edit existing inventory items.</p>
+                        <a href="edit_food_items.php" class="btn btn-primary">Edit Item</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xs-3" style="text-align: center;">
-            <div class="list-group">
-                <a href="view_food_items.php" class="list-group-item ">View Food Items</a>
-                <a href="add_food_items.php" class="list-group-item ">Add Food Items</a>
-                <a href="edit_food_items.php" class="list-group-item ">Edit Food Items</a>
-                <a href="delete_food_items.php" class="list-group-item ">Delete Food Items</a>
+        
+        <!-- Add Restaurant Form -->
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Restaurant</h5>
+                        <form action="myrestaurant1.php" method="post">
+                            <div class="form-group">
+                                <label for="name">Restaurant Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact">Contact Number:</label>
+                                <input type="text" class="form-control" id="contact" name="contact" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <input type="text" class="form-control" id="address" name="address" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Restaurant</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <footer class="footer mt-auto py-3 bg-dark text-white">
-        <div class="container text-center">
-            <span class="text-muted">© <?php echo date("Y"); ?> CakeBytes Cafe'</span>
-        </div>
-    </footer>
-    <script>
-        window.onscroll = function() {
-            scrollFunction();
-        };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-</script>
-
- <!-- Add Bootstrap JavaScript and jQuery library references -->
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-  </body>
+    <!-- JavaScript and Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
